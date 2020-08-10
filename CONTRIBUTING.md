@@ -9,12 +9,18 @@ If you would like to contribute bug fixes or new components,
 make sure there is an existing issue for it, and make a pull
 request referencing the issue.
 
-### Commit messages
+### Development setup
 
-We use [conventional commits](https://www.conventionalcommits.org) to write commit messages.
-If your changes cause problems with how the library was used before,
-don't forget to write `BREAKING CHANGE:` inside the commit message body,
-followed by a description of what has changed and how to adapt for it.
+We use yarn v2 to handle package management. Make sure you have `yarn` and
+`nodejs` installed.
+
+If you need a proxy to access GitHub, make sure the `YARN_HTTP_PROXY` and
+`YARN_HTTPS_PROXY` environment variables are set correctly, or downloading
+dependencies will fail.
+
+After running `yarn`, run `yarn dev` to start a development server hosting
+the example application. You can make changes to the code and the application
+should automatically reload with your changes applied.
 
 ### Code formatting
 
@@ -22,6 +28,13 @@ We use [prettier](https://prettier.io/) to automatically format code, and this i
 during testing (part of linting).
 To make sure tests don't fail on format problems, it's recommended to use a prettier plugin
 for you editor, or to run `yarn prettier:fix` before committing any changes.
+
+### Commit messages
+
+We use [conventional commits](https://www.conventionalcommits.org) to write commit messages.
+If your changes cause problems with how the library was used before,
+don't forget to write `BREAKING CHANGE:` inside the commit message body,
+followed by a description of what has changed and how to adapt for it.
 
 ### Continuous integration
 
