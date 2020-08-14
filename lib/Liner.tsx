@@ -25,7 +25,7 @@ export const LinerContext = React.createContext<LinerContextProps>({
   },
   clampCoord: (point) => point,
   clampCoordArray: (points) => points,
-  clampBBox: (bbox) => bbox,
+  clampBBox: (b) => b,
 })
 
 export interface LinerProps {
@@ -62,21 +62,18 @@ export const Liner: React.FC<LinerProps> = ({ area, children }) => {
       const dx = clamp(areaBBox.x, x, x2) - x
       const dy = clamp(areaBBox.y, y, y2) - y
       // apply reverse translation
-      return points.map(([x, y]) => [x + dx, y + dy])
+      return points.map(([px, py]) => [px + dx, py + dy])
     },
     [areaBBox],
   )
 
   const clampBBox = useCallback(
-    (bbox: BBox): BBox => {
-      const { x, y, width, height } = bbox
-      return {
-        x: clamp(areaBBox.x, x, areaBBox.x2 - width),
-        y: clamp(areaBBox.y, y, areaBBox.y2 - height),
-        width,
-        height,
-      }
-    },
+    ({ x, y, width, height }: BBox): BBox => ({
+      x: clamp(areaBBox.x, x, areaBBox.x2 - width),
+      y: clamp(areaBBox.y, y, areaBBox.y2 - height),
+      width,
+      height,
+    }),
     [areaBBox],
   )
 
