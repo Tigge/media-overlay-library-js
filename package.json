@@ -24,8 +24,7 @@
     "build:esm": "tsc",
     "build:bundle": "webpack --config webpack.config.js",
     "dev": "webpack-dev-server --config webpack.example.js --hot",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
-    "release": "yarn version --new-version `yarn node node_modules/.bin/conventional-recommended-bump -p angular`"
+    "release": "yarn version apply && bash sbin/release.sh"
   },
   "peerDependencies": {
     "pepjs": ">= 0.4.3 < 1",
@@ -50,8 +49,6 @@
     "@typescript-eslint/eslint-plugin": "2.34.0",
     "@typescript-eslint/parser": "2.34.0",
     "babel-loader": "8.1.0",
-    "conventional-changelog-cli": "2.1.0",
-    "conventional-recommended-bump": "6.0.10",
     "css-loader": "3.6.0",
     "eslint": "7.6.0",
     "eslint-config-typescript-shareable": "0.10.0",
